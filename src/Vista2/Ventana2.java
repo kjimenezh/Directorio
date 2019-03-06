@@ -1,5 +1,5 @@
 
-package directorio;
+package Vista2;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,32 +14,37 @@ import javafx.stage.Stage;
 /**
  * @author Kevin Jiménez
  */
-public class ExitView {
+public class Ventana2 {
    private Scene scene;
     
    private GridPane grid;
    private ListView<String> list;   
     
    private Button regresar;
+   private Button siguiente;
    
-   public ExitView(){
+   public Ventana2(){
       grid = new GridPane();
       grid.setAlignment(Pos.CENTER);
       grid.setHgap(10);
       grid.setVgap(10);
-      grid.setPadding(new Insets(25, 25, 25, 25));
+      grid.setPadding(new Insets(15, 15, 15, 15));
       
       list = new ListView<>();
       list.setMinWidth(200);
       grid.add(list, 0, 1);
       
+      HBox filaBts = new HBox();
       regresar = new Button("Regresar");
-      grid.add(regresar, 0, 2);
+      siguiente = new Button("Siguiente");
+      filaBts.getChildren().add(regresar);
+      filaBts.getChildren().add(siguiente);
+      grid.add(filaBts, 0, 2);
       
       scene = new Scene(grid, 400, 300);
    }
    
-   public void show(Stage stage) {
+   public void mostrar(Stage stage) {
       stage.setTitle("Información Directorio");
       stage.setScene(scene);
       stage.show();
@@ -51,6 +56,10 @@ public class ExitView {
 
     public Button getRegresar() {
         return regresar;
+    }
+
+    public Button getSiguiente() {
+        return siguiente;
     }
    
 }

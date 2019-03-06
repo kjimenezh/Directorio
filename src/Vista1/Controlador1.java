@@ -1,37 +1,43 @@
 
-package directorio;
+package Vista1;
 
+import Vista2.Controlador2;
+import Directory.Modelo;
+import Directory.Singleton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
  * @author Kevin Jiménez
  */
-public class EntryVC {
-    private DataBean dataBean;
-    private EntryView view;
+public class Controlador1 {
+    private Modelo modelo;
+    private Ventana1 view;
     
-    public EntryVC(DataBean dataBean) {
-      this.dataBean = dataBean;
-      this.view = new EntryView();
+    public Controlador1(Modelo modelo) {
+      this.modelo = modelo;
+      this.view = new Ventana1();
        
-      view.getAdicionar().setOnAction(new adicionarEventHandler()); 
-      view.getListar().setOnAction(new listarEventHandler());
+      view.getAdicionar().setOnAction(new adicionarEvento()); //se la pasa referencia a un objeto que implementa EventHandler
+      view.getListar().setOnAction(new listarEvento());
     }
     
-    public void show(){
-        view.show(dataBean.getPrimaryStage());
+    public void mostrarVista(){
+        Singleton singleton = Singleton.getSingleton();
+        
+        view.mostrar(singleton.getStage());
     }
-    
-    class listarEventHandler implements EventHandler<ActionEvent>{
+
+    //clases interna / inner class
+    class listarEvento implements EventHandler<ActionEvent>{
         @Override
         public void handle(ActionEvent e) {   
-            ExitVC VC = new ExitVC(dataBean);
-            VC.show();   
+            Controlador2 controlador2 = new Controlador2(modelo);
+            controlador2.mostrarVista();   
         }
     }
     
-    class adicionarEventHandler implements EventHandler<ActionEvent>{
+    class adicionarEvento implements EventHandler<ActionEvent>{
  
         @Override
         public void handle(ActionEvent e) {   
@@ -59,7 +65,7 @@ public class EntryVC {
             }
             
             String erg = null;
-            erg = dataBean.getDirectory().put(nombre, telefono);
+            erg = modelo.getDirectory().put(nombre, telefono);
           
             if(erg == null){
                 view.getMensaje().setText("Información agregada :)");

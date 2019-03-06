@@ -1,9 +1,8 @@
 
-package directorio;
+package Vista1;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,14 +16,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
  * @author Kevin Jiménez
  */
-public class EntryView {
+
+public class Ventana1 {
     
     private Scene scene;
     private GridPane grid;
@@ -41,7 +40,7 @@ public class EntryView {
     private ComboBox menutel;
   
     
-    public EntryView(){
+    public Ventana1(){
         
       grid = new GridPane();
       grid.setAlignment(Pos.CENTER);
@@ -104,11 +103,13 @@ public class EntryView {
         return menuBar;
     }
     
-    public void show(Stage stage) {
+    public void mostrar(Stage stage) {
       stage.setTitle("Registrar Datos");
       stage.setScene(scene);
       stage.show();
-   }
+    }
+    
+    //Getters de layouts dinámicos
 
     public TextField getNombreT() {
         return nombreT;

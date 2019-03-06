@@ -1,5 +1,5 @@
 
-package directorio;
+package Directory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +8,11 @@ import javafx.stage.Stage;
 /**
  * @author Kevin Jiménez
  */
-public class DataBean {
+public class Modelo {
     private Stage primaryStage = null;   
     private Map<String , String> directory = null;
     
-    public DataBean(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public Modelo() {
         this.directory = new HashMap<>();
     }
  
